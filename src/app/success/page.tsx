@@ -19,11 +19,28 @@ export default async function SuccessPage({
   // Set payment ID when session is retrieved
   setPaymentId(session.payment_intent as string);
 
-  return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold">Thank you for your purchase!</h1>
-      <p>Payment ID: {session.payment_intent as string}</p>
-    </div>
-  );
+  try {
+    const session = await stripe.checkout.sessions.retrieve(
+      searchParams.session_id,
+      {
+        expand: ['payment_intent', 'line_items']
+      }
+    );
+
+    if (!session) {
+      return <div>Invalid session</div>;
+    }
+
+    return (
+      <div className="container mx-auto p-4">
+        <h1 className="text-2xl font-bold mb-4">Order Confirmed!</h1>
+        <p>Payment ID: {session.payment_intent?.id || 'N/A'}</p>
+        <p>Amount: ${(session.amount_total || 0) / 100}</p>
+      </div>
+    );
+  } catch (error) {
+    console.error('Error fetching session:', error);
+    return <div>Error processing your order. Please contact support.</div>;
+  }
 }
 
