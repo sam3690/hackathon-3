@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from "@/components/ui/button";
 import { useCart } from "../context/CartContext";
 
 
@@ -8,7 +9,7 @@ export function AddToCartButton({ product }: any) {
   const { addToCart } = useCart();
 
   return (
-    <button 
+    <Button 
       onClick={() => addToCart({
         _id: product._id,
         name: product.name,
@@ -16,9 +17,9 @@ export function AddToCartButton({ product }: any) {
         image: product.image,
         quantity: 1
       })}
-      className="bg-blue-500 text-white px-4 py-2 rounded"
+      className='hover:bg-transparent bg-transparent h-16 w-30 border-2 border-gray-700 text-black font-semibold text-xl'
     >
       Add to Cart
-    </button>
+    </Button>
   );
 }
