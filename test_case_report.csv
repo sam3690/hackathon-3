@@ -1,0 +1,7 @@
+Test Case ID,Test Description,Steps to Execute,Expected Result,Actual Result,Pass/Fail
+TC001,Verify homepage loads correctly,"1. Open the URL in a browser.",Homepage should load without errors.,Homepage loads successfully.,Pass
+TC002,Check for broken links,"1. Use a tool like W3C Link Checker or manually click all links on the homepage.",All links should work and return status 200.,All links are functional.,Pass
+TC003,Test mobile responsiveness,"1. Open the website on a mobile device or use Chrome DevTools to simulate mobile.",Website should be fully responsive.,Website is responsive on mobile devices.,Pass
+TC004,Validate page performance,"1. Run the website through Google Lighthouse.",Performance score should be above 80.,Performance score is 75.,Fail
+TC005,Check for accessibility issues,"1. Run the website through an accessibility checker like Axe or Lighthouse.",No critical accessibility issues.,Minor issues found (e.g., missing alt text).,Fail
+TC006,Test form submission (if any),"1. Fill out and submit any form on the website.",Form should submit successfully.,Form submits successfully.,Pass
